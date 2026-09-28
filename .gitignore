@@ -1,0 +1,11 @@
+# Local environment and secrets
+.env
+
+# Docker and local data
+*.log
+
+# Operating system and editor files
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/

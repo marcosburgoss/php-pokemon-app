@@ -1,0 +1,41 @@
+services:
+  db:
+    image: mysql:5.7
+    container_name: pokemon-db
+    environment:
+      MYSQL_ROOT_PASSWORD: ${DB_ROOT_PASSWORD}
+      MYSQL_DATABASE: pokemonPlus
+      MYSQL_USER: pokemon_app
+      MYSQL_PASSWORD: ${DB_APP_PASSWORD}
+      MYSQL_ROOT_HOST: "%"
+    ports:
+      - "3307:3306"
+    volumes:
+      - pokemon-db-data-57:/var/lib/mysql
+      - ./database/pokemonPlus.sql:/docker-entrypoint-initdb.d/01-pokemonPlus.sql:ro
+      - ./database/pokemon_script_init.sql:/docker-entrypoint-initdb.d/02-pokemon_script.sql:ro
+    healthcheck:
+      test: ["CMD", "mysqladmin", "ping", "-h", "localhost", "-uroot", "-p${DB_ROOT_PASSWORD}"]
+      interval: 5s
+      timeout: 5s
+      retries: 20
+
+  php-apache:
+    build: .
+    container_name: pokemon-php
+    ports:
+      - "8080:80"
+    environment:
+      DB_HOST: db
+      DB_PORT: 3306
+      DB_NAME: pokemonPlus
+      DB_USER: pokemon_app
+      DB_PASSWORD: ${DB_APP_PASSWORD}
+    volumes:
+      - .:/var/www/html
+    depends_on:
+      db:
+        condition: service_healthy
+
+volumes:
+  pokemon-db-data-57:
