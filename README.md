@@ -40,6 +40,8 @@ Abre la aplicacion en:
 http://localhost:8080
 ```
 
+Si al abrir la aplicación, funciona bien pero da error de conexión con la base de datos, esperar unos segundos y volver a refrescar la página. La primera vez que se crea el proyecto a veces el servicio de MySQL no está listo todavía y por eso da error.
+
 ## Arranques posteriores
 
 Cuando la imagen y el volumen ya existen, basta con ejecutar:
