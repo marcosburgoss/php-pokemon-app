@@ -1,6 +1,6 @@
 # Pokemon DB
 
-Aplicacion PHP para gestionar una base de datos de Pokemon. El proyecto se ejecuta con Docker Compose y no necesita XAMPP ni una instalacion local de PHP o MySQL.
+Aplicacion PHP para gestionar una base de datos de Pokemon. El proyecto se ejecuta con Docker Compose y no necesita XAMPP ni una instalacion local de PHP o MySQL. Este proyecto lo realicé como parte de un proyecto de la asignatura de bases de datos de 1º GS de DAM en 2022 para aprender a conectar una aplicación PHP a una base de datos MySQL y poder interactuar con ella: insertar nuevos datos, actualizar los existentes y borrar de la base de datos.
 
 ## Requisitos
 
